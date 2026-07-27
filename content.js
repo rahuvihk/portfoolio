@@ -25,7 +25,7 @@ const CONTENT = {
     story: [
 "Hei! Mina olen Romi-Liis, 23-aastane pealehakkaja. Lõin selle lehe siin, et koguda ühte kohta jäädvustusi ja mälestusi oma erinevatest ettevõtmistest ja projektidest; põhiliselt enda jaoks, aga ka teistega jagamiseks.",
 "Õppisin kaks aastat Tartu Ülikoolis ja seejärel ühe vahetussemestri Granada Ülikoolis hispaania keelt ja kirjandust, mille järel avastasin, et tunnen kogu selle filoloogilise teooria juures väga palju puudust käelisest, füüsilisest tegevusest. Ja mitte ainult hobikorras, vaid suuremal skaalal. Nii võtsime ühes elukaaslasega endale väljakutse leida meie koju üks kõpitsemist vajav kummut ja seda restaureerima hakata. Sellest saab lugeda täpsemalt juba kummutile pühendatud alalehel, aga igatahes inspireeris see projekt mind looma ka seda veebilehte.",
-"Vabal ajal meeldib mulle nii Eestis kui ka välismaal ringi rännata, armastan spontaanseid seiklusi. Naudin väga näiteks rabas käimist, matkamist ja telkimist (kuigi kardan paaniliselt pea kõiki loomi, linde, putukaid ja muid tegelasi). Mulle meeldib kokata–küpsetada, kinos ja niisama väljas käia, luuletada, meisterdada, savi voolida, pildistada, tandemrattaga sõita, kleepse valmistada ja joonistada–maalida (kuigi selles ma liiga hea ei ole). Ühes laagris olen aidanud ka töötube korraldada; ühel aastal sai tehtud pärlitega käevõrusid ja teisel aastal hoopis taimetrükki.",
+"Vabal ajal meeldib mulle nii Eestis kui ka välismaal ringi rännata, armastan spontaanseid seiklusi. Naudin väga näiteks {{rabas|images/rabas.jpeg}} käimist, {{matkamist|images/matkamist.jpeg}} ja telkimist (kuigi kardan paaniliselt pea kõiki loomi, linde, putukaid ja muid tegelasi). Mulle meeldib kokata–küpsetada, {{kinos|images/kinos.jpeg}} ja niisama {{väljas|images/väljas.jpeg}} käia, luuletada, {{mõistatusi|images/mõistatusi.jpeg}} lahendada, meisterdada, savi voolida, pildistada, tandemrattaga sõita, kleepse valmistada ja joonistada–maalida (kuigi selles ma liiga hea ei ole). Ühes laagris olen aidanud ka töötube korraldada; ühel aastal sai tehtud pärlitega käevõrusid ja teisel aastal hoopis {{taimetrükki|images/taimetrükki.jpeg}}.",
 "Gümnaasiumis läbisin valikaine raames plaatimise kursuse, tänu millele oman nüüd plaatija neljanda taseme kutset. Sügisel loodan õppima asuda Tallinna Tehnoloogiakolledžisse, kas pehme mööbli valmistaja või restauraator–viimistleja erialale.",
     ],
   },
@@ -34,6 +34,7 @@ const CONTENT = {
   contact: {
     title: "Kontakt",
     tag: "",
+    img: "images/Kontakt.jpeg",
     body: [
       'Minuga saate mis tahes põhjusel võtta ühendust minu meiliaadressi kaudu: <a class="accent-link" href="mailto:romiliis03@gmail.com">romiliis03@gmail.com</a>! :)',
     ],
@@ -105,8 +106,10 @@ const CONTENT = {
       id: "Klõpsud",
       title: "Klõpsud",
       tag: "Fotograafia",
-      img: "images/2.jpeg",
+      img: "images/Fotograafia.jpeg",
       coverImg: "images/2-cover.jpeg",
+      hideAlbum: true,
+      hidePane: true,
       body: ["Kirjuta siia projekti kirjeldus."],
       gallery: [],
     },
@@ -132,7 +135,17 @@ const CONTENT = {
       coverImg: "images/3-cover.jpeg",
       hideAlbum: true,
       hidePane: true,
-      body: ["Kirjuta siia."],
+      body: [
+        "<em>28.03.2022 (H-le ja M-ile)</em><br>juuli minu jaanuaris ja august minu märtsis,<br>ja aprillis, kui kõik õitsemas, kuid mina olen närtsind’.<br>vikerkaar mu sopalombis, päike pimeduses,<br>vihmapiisk mu põua ajal, vesi minu tules.<br>pimedus kui üle võtnud, valgust veel ei paista,<br>ilmub lootus päikesega, energiat ma ei raiska.<br>kaovad külm ja talveilmad, pimedus ja tusa,<br>keeran kella edasi ja õue lähen pusas.<br>nemad on mu suvekuud ja valgus, lootus, tahe,<br>minu päästjad, naer ja soojus, minu parim pahe.",
+        "<em>6.06.2022</em><br>süda rinnus, kopsus, ajus,<br>neeru all ja maksa taga.<br>vahel alla, säärde, vajub,<br>ei, see haigus, see ei maga.<br>oli lootus, oli tahe,<br>kadund’ ta ja kadund’ tema.<br>võitlus toimus kahe vahel,<br>suri lootus viimasena.",
+        "<em>31.07.2022</em><br>olen vihm ja raamatukogu,<br>olen metsamaja logu<br>olen sügislehed ja mäed,<br>riisuv reha ja töökad käed<br>olen raamat ja olen film,<br>olen teiste õudusilm<br>olen vaikus ja olen laul,<br>olen külma päeva saun<br>vihmatants ja autosõit,<br>kodumängu magus võit<br>olen kohvik ja vihmavari,<br>piparmünditee ja lemmiksari",
+        "<em>3.11.2022</em><br>ma ei jaksa, ma ei jõua<br>ikka paigal, tasa sõuan<br>annan alla, ütlen üles<br>sada kohustust mu süles<br>augus auk ja mustas mustus<br>nii see tulukene kustus<br>aga kõik, mis ees, nüüd parem<br>tuleb hiljem, tuleb varem",
+        "<em>11.12.2023</em><br>Tähtede all ja täiskuu kõrval,<br>kõnnin liivasel rannal õrnal.<br>Seisan ja vaatan ja aru ei saa,<br>kas see, mida tunnen on nostalgia.<br>Mõtted on samad, kuid vaated uued,<br>võib öelda on puhumas uued tuuled.",
+        "<em>30.12.2023</em><br>Me kõik ripuks maailmaäärel,<br>kui gravitatsiooni enam ei oleks,<br>kinni hoida kaua ei jõuaks,<br>nii saaksime kosmose mureks.",
+        "<em>24.03.2024</em><br>Pimedus oli pikk,<br>aga tunneli lõpus on valgus.<br>Nüüd juba näha päikest,<br>see on tunneli lõpu algus.",
+        "<em>18.09.2025 (H-le)</em><br>Kannan uhkust oma hinges<br>ja rõõmu südames,<br>et kõnnivad su jalad<br>nii õigel eluteel.<br>Tead kõiki puid ja põõsaid,<br>umbrohtu, lillesid<br>ning tundma õppimata<br>ei jää sul midagi.<br>Loomajäljed, linnulaul,<br>neid kõiki ammu tead,<br>nüüd ühes endaga<br>ka teised metsa vead.<br>Nii rohekas su sära<br>ja samblane su naer,<br>su silmis tähti rohkem<br>kui kogu taevalael.",
+        "<em>20.10.2025 (K-le)</em><br>hämarad õhtud ning sahisevad lehed,<br>see jäine autoklaas, mis õue viib mehed.<br>kuulavad kõrvad ja hoidvad käed,<br>ta minu jaoks ületab mered ja mäed.<br>vaikne hing, kuid mõtted nii valjud,<br>et ühel pool orud kui teisel pool kaljud.<br>… tooks mõtisklejaks, tean, ei olla saa keegi,<br>kui mitte mu pärl, kullast kallim veelgi.",
+      ],
     },
   ],
 };

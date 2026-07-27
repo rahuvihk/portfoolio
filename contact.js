@@ -10,3 +10,8 @@ document.title = `${c.title || "Kontakt"} — ${CONTENT.brand}`;
 $("cTag").textContent = c.tag || "";
 $("cTitle").textContent = c.title || "";
 $("cBody").innerHTML = (c.body || []).map((p) => `<p>${p}</p>`).join("");
+if (c.img) {
+  const img = $("cImg");
+  img.src = c.img;
+  img.alt = c.title || "";
+}

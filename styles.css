@@ -1,4 +1,5 @@
-#projStory strong {
+#projStory strong,
+#projStory em {
   color: var(--accent);
 }
 #projStory p + p {
@@ -109,6 +110,7 @@ main {
 
 .site-nav {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -504,6 +506,13 @@ a.mark {
   object-fit: cover;
   display: block;
   animation: paneFade 0.45s var(--ease);
+}
+.pane-figure--natural {
+  aspect-ratio: auto;
+}
+.pane-figure--natural img {
+  height: auto;
+  object-fit: contain;
 }
 
 @keyframes paneFade {

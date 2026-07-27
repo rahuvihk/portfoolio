@@ -61,17 +61,25 @@ $null = $ws.SendAsync($buf, [System.Net.WebSockets.WebSocketMessageType]::Text, 
 Start-Sleep -Milliseconds 200
 $null = $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, "done", $cts.Token).GetAwaiter().GetResult()
 
-# Bring the Chrome window to the front.
+# Restore + focus the preview Chrome window (find it by profile dir, not
+# title, so a minimized/hidden window is still reachable).
 try {
-  $chromeProc = Get-Process chrome | Where-Object { $_.MainWindowTitle } | Select-Object -First 1
-  if ($chromeProc) {
-    Add-Type -TypeDefinition @"
-      using System;
-      using System.Runtime.InteropServices;
-      public class Win {
-        [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
-      }
+  Add-Type -TypeDefinition @"
+    using System;
+    using System.Runtime.InteropServices;
+    public class Win {
+      [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr h, int c);
+      [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
+    }
 "@ 2>$null
-    [Win]::SetForegroundWindow($chromeProc.MainWindowHandle) | Out-Null
+  $proc = Get-Process chrome -ErrorAction SilentlyContinue |
+    Where-Object { $_.MainWindowHandle -ne 0 } |
+    Where-Object {
+      (Get-CimInstance Win32_Process -Filter "ProcessId=$($_.Id)").CommandLine -like "*portfolio-preview-chrome*"
+    } |
+    Select-Object -First 1
+  if ($proc) {
+    [Win]::ShowWindow($proc.MainWindowHandle, 9) | Out-Null   # SW_RESTORE
+    [Win]::SetForegroundWindow($proc.MainWindowHandle) | Out-Null
   }
 } catch {}
