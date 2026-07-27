@@ -112,15 +112,19 @@ main {
   display: flex;
   align-items: center;
   gap: 28px;
+  line-height: 1;
 }
 
-.site-nav a {
+.site-nav > a {
   color: var(--ink-dim);
   text-decoration: none;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.3s var(--ease);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .site-nav a:hover {
@@ -130,6 +134,7 @@ main {
 /* ---------- Nav dropdown ---------- */
 .nav-drop {
   position: relative;
+  line-height: 1;
 }
 
 .nav-drop__toggle {
@@ -143,6 +148,9 @@ main {
   text-transform: uppercase;
   cursor: pointer;
   transition: color 0.3s var(--ease);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-drop__toggle:hover,

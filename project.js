@@ -34,9 +34,15 @@ if (!project) {
   const paras = project.story || project.body || [];
   $("projStory").innerHTML = paras.map((p) => `<p>${renderParagraph(p)}</p>`).join("");
 
+  if (project.hideStory) {
+    document.querySelector(".project__story")?.remove();
+  }
   if (project.hidePane) {
     document.querySelector(".project__pane")?.remove();
     document.querySelector(".project__split")?.classList.add("project__split--full");
+  }
+  if (project.hideStory && project.hidePane) {
+    document.querySelector(".project__split")?.remove();
   }
   // The pane starts on the project's cover image and returns to it when no
   // hotword is hovered.
@@ -73,7 +79,9 @@ if (!project) {
 
   // Album: a collage of every designated photo, shown after the text.
   // Numbered in the chronological order the words appear in the story.
-  const albumSrcs = [...new Set(hotwords.map((h) => h.dataset.src))];
+  const albumSrcs = project.photos && project.photos.length
+    ? project.photos
+    : [...new Set(hotwords.map((h) => h.dataset.src))];
   const album = $("projAlbum");
   const plain = project.plainAlbum;
   if (project.hideAlbum) {
