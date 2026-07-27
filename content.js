@@ -23,10 +23,10 @@ const CONTENT = {
     plainAlbum: true, // no numbers, no lightbox — just the photo collage
     hideAlbum: true, // don't show the photo grid at the bottom
     story: [
-"Hei! Mina olen {{Romi-Liis|images/Romi-Liis.jpeg}}, 23-aastane pealehakkaja. Lõin selle lehe siin, et koguda ühte kohta jäädvustusi ja mälestusi oma erinevatest ettevõtmistest ja projektidest; põhiliselt enda jaoks, aga ka teistega jagamiseks.",
+"Hei! Mina olen Romi-Liis, 23-aastane pealehakkaja. Lõin selle lehe siin, et koguda ühte kohta jäädvustusi ja mälestusi oma erinevatest ettevõtmistest ja projektidest; põhiliselt enda jaoks, aga ka teistega jagamiseks.",
 "Õppisin kaks aastat Tartu Ülikoolis ja seejärel ühe vahetussemestri Granada Ülikoolis hispaania keelt ja kirjandust, mille järel avastasin, et tunnen kogu selle filoloogilise teooria juures väga palju puudust käelisest, füüsilisest tegevusest. Ja mitte ainult hobikorras, vaid suuremal skaalal. Nii võtsime ühes elukaaslasega endale väljakutse leida meie koju üks kõpitsemist vajav kummut ja seda restaureerima hakata. Sellest saab lugeda täpsemalt juba kummutile pühendatud alalehel, aga igatahes inspireeris see projekt mind looma ka seda veebilehte.",
-"Vabal ajal meeldib mulle nii Eestis kui ka välismaal ringi rännata, armastan spontaanseid seiklusi. Naudin väga näiteks rabas käimist, matkamist ja telkimist (kuigi kardan paaniliselt pea kõiki loomi, linde, putukaid ja muid tegelasi). Mulle meeldib kokata--küpsetada, kinos ja niisama väljas käia, luuletada, meisterdada, savi voolida, pildistada, tandemrattaga sõita, kleepse valmistada ja joonistada--maalida (kuigi selles ma liiga hea ei ole). Ühes laagris olen aidanud ka töötube korraldada; ühel aastal sai tehtud pärlitega käevõrusid ja teisel aastal hoopis taimetrükki.",
-"Gümnaasiumis läbisin valikaine raames plaatimise kursuse, tänu millele oman nüüd plaatija neljanda taseme kutset. Sügisel loodan õppima asuda Tallinna Tehnoloogiakolledžisse, kas pehme mööbli valmistaja või restauraator--viimistleja erialale.",
+"Vabal ajal meeldib mulle nii Eestis kui ka välismaal ringi rännata, armastan spontaanseid seiklusi. Naudin väga näiteks rabas käimist, matkamist ja telkimist (kuigi kardan paaniliselt pea kõiki loomi, linde, putukaid ja muid tegelasi). Mulle meeldib kokata–küpsetada, kinos ja niisama väljas käia, luuletada, meisterdada, savi voolida, pildistada, tandemrattaga sõita, kleepse valmistada ja joonistada–maalida (kuigi selles ma liiga hea ei ole). Ühes laagris olen aidanud ka töötube korraldada; ühel aastal sai tehtud pärlitega käevõrusid ja teisel aastal hoopis taimetrükki.",
+"Gümnaasiumis läbisin valikaine raames plaatimise kursuse, tänu millele oman nüüd plaatija neljanda taseme kutset. Sügisel loodan õppima asuda Tallinna Tehnoloogiakolledžisse, kas pehme mööbli valmistaja või restauraator–viimistleja erialale.",
     ],
   },
 
@@ -49,33 +49,23 @@ const CONTENT = {
     {
       name: "Restaureerimine",
       projectId: "Kummut",
-      intro: ["Kirjuta siia lühike sissejuhatus restaureerimistöödest."],
+      intro: ["Oma restaureerimisteekonnaga olen alles hoogu võtmas. Seni on mul õnnestunud ümber teha üks ülilahe täispuidust vintage kummut. Tulevikus loodan aga veel palju restaureerimisega tegeleda, sest see hakkas mulle tõesti väga meeldima! Seniks saab aga lugeda, kuidas see kummut siis ikkagi valmis."],
     },
     {
       name: "Fotograafia",
       projectId: "Klõpsud",
-      intro: ["Kirjuta siia lühike sissejuhatus fotograafiast."],
+      intro: ["Kuigi professionaalse fotograafi tiitlile ma ei pretendeeri, pean siiski tõdema, et pildistamine–filmimine ja sellele järgnev monteerimine on mulle alati meeltmööda olnud. Mind külastavad loomingulised ideed jõuavad tihtipeale ka teostuseni. Armastan katsetada erinevate stiilide ja värvidega ning kõige rohkem meeldib mulle mõte sellest, et foto- või videograafia annab meile võimalusi mälestusi igavesti talletada."],
     },
     {
       name: "Kirjutised",
-      projectId: "Mõtted",
-      intro: ["Kirjuta siia lühike sissejuhatus kirjutistest."],
-    },
-    {
-      name: "Keraamika",
-      projectId: "Magnetid",
-      intro: ["Kirjuta siia lühike sissejuhatus keraamikast."],
-    },
-    {
-      name: "Uusim rõõmuallikas",
-      projectId: "Tandem",
-      intro: ["Kirjuta siia lühike sissejuhatus."],
+      projectIds: ["Luuletused varasemast ajast", "Luuletused hilisemast ajast"],
+      intro: ["Luuletusi hakkasin kirjutama, kui olin algklassides; see võis alata juba esimeses või teises klassis, kuid kõige varasem säilinud kirjutis on aastast 2013, kui olin juba kolmandas. Kuigi algselt, lapseeas kirjutades olid luuletused väga lihtsad ja lapselikult armsad, siis hiljem hakkasin kirjutamist kasutama teraapiana. Tunnen, et endast välja kirjutamine mõjub mulle hästi ja aitab seda suurt mõtetepundart lahti harutada. Teen seda nii eesti kui ka inglise keeles. Siin jagan valikut minu luulest, nii lapseeast kui ka hilisemast elust. Kõik varasemas loomingus esinevad kirjavead jätan muutmata… et oleks aus vaade. :) Tahan ka kinnitada, et kuigi suur osa minu hilisematest kirjutistest mõjub äärmiselt depressiivselt, pole muretsemiseks põhjust. Loomingus tavatsen emotsioone ja tundeid üle paisutada, dramatiseerida ja neid sõnastada hoopis tugevamalt/negatiivsemalt kui muidu. Aga minu meelest just see loome samastatavaks ja kaasa elatavaks teebki. :)"],
     },
   ],
 
   introTitle: "Valitud projektid",
   introSub:
-    "Vaade hiljutistele projektidele — vaatamiseks hoia hiir pildil, täpsemalt tutvumiseks kliki.",
+    "Vaade minu hiljutistele projektidele — vaatamiseks hoia hiir pildil, täpsemalt tutvumiseks kliki.",
 
   footerLeft: "© 2026 Romi-Liis",
   footerRight: "",
@@ -121,31 +111,28 @@ const CONTENT = {
       gallery: [],
     },
     {
-      id: "Mõtted",
-      title: "Mõtted",
+      id: "Luuletused varasemast ajast",
+      title: "Luuletused varasemast ajast",
       tag: "Kirjutised",
       img: "images/3.jpeg",
       coverImg: "images/3-cover.jpeg",
-      body: ["Kirjuta siia projekti kirjeldus."],
-      gallery: [],
+      hideAlbum: true,
+      hidePane: true,
+      body: [
+        "<strong>KÕIK ON UUS</strong><br><em>21.12.2013</em><br>Uus mul kodu, uus on tuba,<br>saabus see kõik ammu juba,<br>kõige selle jaoks mul luba.<br>Uus on võti ukse ees,<br>kehtib see väljas ja ka sees.<br>Meil kõik seinad erivärvi,<br>kui ei usu vaata järgi.<br>Uued on mul õpsid,<br>ja uued on ka sõpsid.<br>Uus on mul ka koolimaja,<br>kuna seda läheb vaja.<br>Juuksed enam pole pikkad,<br>aga mina Liisu ikka.",
+        "<strong>KEVAD SAABUS</strong><br><em>21.03.2014</em><br>Kevad saabus tasa - tuulega koos ta sammus,<br>lumi sulanud juba - kevad temaga katsus rammu.<br>Roheliseks lähevad juba meie puud ja sirelid puhkevad õide,<br>mõned lilled meie maal juba avavad suud ning õues kuuleme laste hüüdeid.<br>Väljas me näha võime päikest,<br>mis kollane on, aga veel väike.<br>Koolis peavad lapsed veel pingutama pead,<br>siis tunnistusel on neil hinded kõik head.<br>Kõik ootavad suve, et randa saaks minna,<br>ootusaeg tundub jube ja tee pikk sinna.<br>Pange tähele kõiki - ka pisipõnne,<br>soovin ma teile päikest - ja õnne!",
+        "<strong>SEE JUHTUS VOLBRIÖÖL</strong><br><em>29.04.2014</em><br>Ühel päeval kõnnin ma,<br>keset Rüütli tänavat.<br>Äkki tuleb mulle vastu,<br>nõid, kes mulle jala peale astub.<br>Ta ei lausu ühtki sõna,<br>läheb ära, samm veel kõlab.<br>Ma näost nüüd olen lumivalge,<br>kortsuline nõia palge.<br>Natukese aja pärast ma,<br>teda jälle näha saan.<br>Järsku hüppab luua selga,<br>nüüd ma teda tõesti pelgan.<br>Aga äkki näen ma naeratust,<br>ja kuulen kõva karjatust.<br>Nõid hüüab siis:”Head volbriööd!<br>Ma tegema pean veidi tööd.”<br>See juhtus volbriööl…",
+      ],
     },
     {
-      id: "Magnetid",
-      title: "Magnetid",
-      tag: "Keraamika",
-      img: "images/4.jpeg",
-      coverImg: "images/4-cover.jpeg",
-      body: ["Kirjuta siia projekti kirjeldus."],
-      gallery: [],
-    },
-    {
-      id: "Tandem",
-      title: "Tandem",
-      tag: "Uusim rõõmuallikas",
-      img: "images/5.jpeg",
-      coverImg: "images/5-cover.jpeg",
-      body: ["Kirjuta siia projekti kirjeldus."],
-      gallery: [],
+      id: "Luuletused hilisemast ajast",
+      title: "Luuletused hilisemast ajast",
+      tag: "Kirjutised",
+      img: "images/3.jpeg",
+      coverImg: "images/3-cover.jpeg",
+      hideAlbum: true,
+      hidePane: true,
+      body: ["Kirjuta siia."],
     },
   ],
 };

@@ -18,7 +18,8 @@ if (!category) {
     .map((p) => `<p>${p}</p>`)
     .join("");
 
-  const link = $("catSubLink");
-  link.href = `project.html?id=${encodeURIComponent(category.projectId)}`;
-  link.textContent = category.projectId + " →";
+  const ids = category.projectIds || (category.projectId ? [category.projectId] : []);
+  $("catSubLinks").innerHTML = ids
+    .map((id) => `<a class="category__sub-link" href="project.html?id=${encodeURIComponent(id)}">${id} →</a>`)
+    .join("");
 }

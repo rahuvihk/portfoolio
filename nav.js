@@ -8,17 +8,19 @@
   const parts = CONTENT.nav.map(([label, href]) => {
     if (href === "__categories__") {
       const items = (CONTENT.categories || [])
-        .map(
-          (c) => `
+        .map((c) => {
+          const ids = c.projectIds || (c.projectId ? [c.projectId] : []);
+          const subs = ids
+            .map(
+              (id) => `<a class="nav-drop__sub" href="project.html?id=${encodeURIComponent(id)}">${id}</a>`
+            )
+            .join("");
+          return `
             <li class="nav-drop__group">
-              <a class="nav-drop__cat" href="category.html?name=${encodeURIComponent(
-                c.name
-              )}">${c.name}</a>
-              <a class="nav-drop__sub" href="project.html?id=${encodeURIComponent(
-                c.projectId
-              )}">${c.projectId}</a>
-            </li>`
-        )
+              <a class="nav-drop__cat" href="category.html?name=${encodeURIComponent(c.name)}">${c.name}</a>
+              ${subs}
+            </li>`;
+        })
         .join("");
       return `
         <div class="nav-drop">

@@ -2,6 +2,17 @@
 //  Homepage machinery. Edit your text in content.js, not here.
 // ===========================================================================
 // CONTENT is defined in content.js (loaded before this file).
+(function () {
+  const gate = document.getElementById("mobileGate");
+  if (gate && !sessionStorage.getItem("mobileGateSeen")) {
+    gate.hidden = false;
+    document.getElementById("mobileGateOk").addEventListener("click", () => {
+      gate.hidden = true;
+      sessionStorage.setItem("mobileGateSeen", "1");
+    });
+  }
+})();
+
 const PROJECTS = CONTENT.projects;
 const ROTATE_MS = (CONTENT.rotateSeconds || 5) * 1000;
 

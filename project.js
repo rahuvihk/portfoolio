@@ -34,6 +34,10 @@ if (!project) {
   const paras = project.story || project.body || [];
   $("projStory").innerHTML = paras.map((p) => `<p>${renderParagraph(p)}</p>`).join("");
 
+  if (project.hidePane) {
+    document.querySelector(".project__pane")?.remove();
+    document.querySelector(".project__split")?.classList.add("project__split--full");
+  }
   // The pane starts on the project's cover image and returns to it when no
   // hotword is hovered.
   const defaultSrc = project.coverImg || project.img;

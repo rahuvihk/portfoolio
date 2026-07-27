@@ -7,7 +7,7 @@
 #  Default url = index.html.
 # =============================================================================
 param(
-  [string]$Url = "file:///C:/Users/kaare/Documents/portfolio/index.html"
+  [string]$Url = "file:///C:/Users/kaare/Documents/romi/portfolio/index.html"
 )
 
 $ErrorActionPreference = "SilentlyContinue"
@@ -39,6 +39,7 @@ if (-not $page) {
   Start-Process chrome -ArgumentList @(
     "--remote-debugging-port=$port",
     "--user-data-dir=`"$profileDir`"",
+    "--new-window",
     $Url
   )
   exit 0
