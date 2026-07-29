@@ -532,19 +532,39 @@ a.mark {
   }
 }
 
-/* Album: collage of all designated photos, after the text. */
+/* Album: JS-balanced column masonry of full-frame photos.
+   Same column width => portraits render taller (bigger),
+   landscapes render shorter (smaller). Nothing is cropped. */
 .project__album {
-  columns: 3 220px;
-  column-gap: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   margin-top: clamp(48px, 8vw, 90px);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project__album .album-col:nth-child(2) {
+  margin-top: 36px;
+}
+.project__album .album-col:nth-child(3) {
+  margin-top: 14px;
 }
 
 .album-item {
   position: relative;
-  margin: 0 0 14px;
-  break-inside: avoid;
-  border-radius: 12px;
+  margin: 0;
   overflow: hidden;
+  border-radius: 3px;
   background: var(--bg-soft);
   cursor: pointer;
 }
@@ -641,6 +661,7 @@ a.mark {
 
 .album-item img {
   width: 100%;
+  height: auto;
   display: block;
   transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
   filter: grayscale(0.15);
@@ -654,7 +675,10 @@ a.mark {
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
   .project__album {
-    columns: 2 140px;
+    gap: 10px;
+  }
+  .album-col {
+    gap: 10px;
   }
   .project__split {
     grid-template-columns: 1fr;

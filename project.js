@@ -98,10 +98,109 @@ if (!project) {
       (src, i) =>
         `<figure class="album-item${plain ? " album-item--plain" : ""}" data-index="${i}">
            ${plain ? "" : `<span class="album-num">${i + 1}</span>`}
-           <img src="${src}" alt="${project.title || ""}" loading="lazy" />
+           <img src="${src}" alt="${project.title || ""}" />
          </figure>`
     )
     .join("");
+
+  // Balanced masonry: place each photo in the currently shortest column,
+  // based on its natural aspect ratio, so columns end at similar heights
+  // and no image looks orphaned. Rebuilds on resize (column-count change).
+  const figures = [...album.querySelectorAll(".album-item")];
+  const images = figures.map((f) => f.querySelector("img"));
+
+  function targetColCount() {
+    const w = album.clientWidth || window.innerWidth;
+    if (w < 520) return 2;
+    return 3;
+  }
+
+  let currentCols = 0;
+  function layoutMasonry() {
+    const cols = targetColCount();
+    if (cols === currentCols && album.querySelector(".album-col")) return;
+    currentCols = cols;
+    // Clear inline sizing left over from any previous layout mode.
+    figures.forEach((fig) => {
+      fig.style.width = "";
+      fig.style.height = "";
+      const img = fig.querySelector("img");
+      if (img) {
+        img.style.width = "";
+        img.style.height = "";
+        img.style.objectFit = "";
+      }
+    });
+    const heights = Array(cols).fill(0);
+    const buckets = Array.from({ length: cols }, () => []);
+    const lastGroup = Array(cols).fill(null);
+    const lastOrient = Array(cols).fill(null);
+    const groupOf = (src) => {
+      const m = src.match(/([^/\\]+)\.[a-z]+$/i);
+      return m ? m[1].slice(0, 3) : src;
+    };
+    figures.forEach((fig, i) => {
+      const img = images[i];
+      const aspect =
+        img.naturalWidth && img.naturalHeight
+          ? img.naturalHeight / img.naturalWidth
+          : 1;
+      const orient = aspect >= 1 ? "p" : "l";
+      const group = groupOf(img.getAttribute("src") || "");
+      let best = 0;
+      let bestScore = Infinity;
+      for (let c = 0; c < cols; c++) {
+        let score = heights[c];
+        if (lastGroup[c] === group) score += 1000;
+        if (lastOrient[c] === orient) score += 0.35;
+        if (c > 0 && lastGroup[c - 1] === group) score += 500;
+        if (c < cols - 1 && lastGroup[c + 1] === group) score += 500;
+        if (score < bestScore) {
+          bestScore = score;
+          best = c;
+        }
+      }
+      buckets[best].push(fig);
+      heights[best] += aspect;
+      lastGroup[best] = group;
+      lastOrient[best] = orient;
+    });
+    album.innerHTML = "";
+    buckets.forEach((bucket) => {
+      const col = document.createElement("div");
+      col.className = "album-col";
+      bucket.forEach((fig) => col.appendChild(fig));
+      album.appendChild(col);
+    });
+  }
+
+  function whenAllLoaded(cb) {
+    let remaining = images.length;
+    if (!remaining) return cb();
+    images.forEach((img) => {
+      if (img.complete && img.naturalWidth) {
+        if (--remaining === 0) cb();
+      } else {
+        img.addEventListener(
+          "load",
+          () => { if (--remaining === 0) cb(); },
+          { once: true }
+        );
+        img.addEventListener(
+          "error",
+          () => { if (--remaining === 0) cb(); },
+          { once: true }
+        );
+      }
+    });
+  }
+
+  whenAllLoaded(layoutMasonry);
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layoutMasonry, 150);
+  });
 
   // --- Lightbox with prev/next ------------------------------------------
   {
