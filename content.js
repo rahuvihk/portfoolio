@@ -111,6 +111,7 @@ const CONTENT = {
       hideStory: true,
       hidePane: true,
       plainAlbum: true,
+      useThumbs: true,
       photos: [
         "images/klõpsud/dets.jpeg",
         "images/klõpsud/gloobus.jpeg",

@@ -90,6 +90,17 @@ if (!project) {
   }
   const album = $("projAlbum");
   const plain = project.plainAlbum;
+  // For albums with a matching thumb/ folder next to the originals, load
+  // low-res thumbnails in the grid and swap to the full-res original in the
+  // lightbox. Keeps the page fast without sacrificing lightbox quality.
+  function thumbSrc(src) {
+    const i = src.lastIndexOf("/");
+    if (i < 0) return src;
+    const dir = src.slice(0, i);
+    const file = src.slice(i + 1);
+    const base = file.replace(/\.[^.]+$/, "");
+    return `${dir}/thumb/${base}.jpg`;
+  }
   if (project.hideAlbum) {
     album.remove();
   } else {
@@ -98,7 +109,7 @@ if (!project) {
       (src, i) =>
         `<figure class="album-item${plain ? " album-item--plain" : ""}" data-index="${i}">
            ${plain ? "" : `<span class="album-num">${i + 1}</span>`}
-           <img src="${src}" alt="${project.title || ""}" />
+           <img src="${project.useThumbs ? thumbSrc(src) : src}" alt="${project.title || ""}" />
          </figure>`
     )
     .join("");
