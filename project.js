@@ -79,9 +79,15 @@ if (!project) {
 
   // Album: a collage of every designated photo, shown after the text.
   // Numbered in the chronological order the words appear in the story.
-  const albumSrcs = project.photos && project.photos.length
+  let albumSrcs = project.photos && project.photos.length
     ? project.photos
     : [...new Set(hotwords.map((h) => h.dataset.src))];
+  if (project.shuffleAlbum) {
+    for (let i = albumSrcs.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [albumSrcs[i], albumSrcs[j]] = [albumSrcs[j], albumSrcs[i]];
+    }
+  }
   const album = $("projAlbum");
   const plain = project.plainAlbum;
   if (project.hideAlbum) {
@@ -97,8 +103,8 @@ if (!project) {
     )
     .join("");
 
-  // --- Lightbox with prev/next (skipped when plainAlbum is set) ----------
-  if (!plain) {
+  // --- Lightbox with prev/next ------------------------------------------
+  {
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
   lightbox.innerHTML = `
@@ -150,6 +156,6 @@ if (!project) {
     else if (e.key === "ArrowLeft") showLb(lbIdx - 1);
     else if (e.key === "ArrowRight") showLb(lbIdx + 1);
   });
-  } // end if (!plain)
+  } // end lightbox block
   } // end else (hideAlbum)
 }
