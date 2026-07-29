@@ -187,6 +187,7 @@ if (!project) {
       bucket.forEach((fig) => col.appendChild(fig));
       album.appendChild(col);
     });
+    album.classList.add("is-ready");
   }
 
   function whenAllLoaded(cb) {

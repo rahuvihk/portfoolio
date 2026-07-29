@@ -30,6 +30,20 @@ function Process-Dir($srcPath, $maxW) {
 
     $img = [System.Drawing.Image]::FromFile($inFile)
     try {
+      # Honor EXIF orientation (tag 0x0112) — System.Drawing ignores it otherwise.
+      $orient = 1
+      if ($img.PropertyIdList -contains 0x0112) {
+        $orient = $img.GetPropertyItem(0x0112).Value[0]
+      }
+      switch ($orient) {
+        2 { $img.RotateFlip([System.Drawing.RotateFlipType]::RotateNoneFlipX) }
+        3 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate180FlipNone) }
+        4 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate180FlipX) }
+        5 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate90FlipX) }
+        6 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate90FlipNone) }
+        7 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate270FlipX) }
+        8 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate270FlipNone) }
+      }
       $w = $img.Width; $h = $img.Height
       if ($w -gt $maxW) {
         $ratio = $maxW / $w
