@@ -16,9 +16,13 @@ const paneImg = $("paneImg");
 // Turn a paragraph string into HTML, converting {{word|images/x.jpg}} markers
 // into hoverable "hotwords" that swap the photo pane. Everything else is left
 // as plain text.
+function toThumb(src) {
+  return src.replace(/^images\/([^/]+)\.(jpe?g|png)$/i, "images/thumb/$1.jpg");
+}
+
 function renderParagraph(text) {
   return text.replace(/\{\{([^|]+)\|([^}]+)\}\}/g, (_, word, src) => {
-    return `<span class="hotword" data-src="${src.trim()}">${word.trim()}</span>`;
+    return `<span class="hotword" data-src="${toThumb(src.trim())}">${word.trim()}</span>`;
   });
 }
 
@@ -46,7 +50,7 @@ if (!project) {
   }
   // The pane starts on the project's cover image and returns to it when no
   // hotword is hovered.
-  const defaultSrc = project.coverImg || project.img;
+  const defaultSrc = toThumb(project.coverImg || project.img);
   paneImg.src = defaultSrc;
   paneImg.alt = project.title || "";
 

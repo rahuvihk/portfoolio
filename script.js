@@ -32,7 +32,7 @@ const panels = PROJECTS.map((p, i) => {
   a.href = `project.html?id=${encodeURIComponent(p.id)}`;
   a.setAttribute("aria-label", `${p.title} — ${p.tag}`);
   a.innerHTML = `
-    <img class="panel__img" src="${p.img}" alt="${p.title}" loading="lazy" />
+    <img class="panel__img" src="${p.img.replace(/^images\/([^/]+)\.(jpe?g|png)$/i, "images/thumb/$1.jpg")}" alt="${p.title}" loading="lazy" />
     <div class="panel__meta">
       <div class="panel__index">${String(i + 1).padStart(2, "0")} / ${String(
     PROJECTS.length
